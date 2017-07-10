@@ -3,6 +3,7 @@ package common;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -10,6 +11,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.io.IOException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
@@ -21,12 +24,14 @@ public class BaseAPIs {
 
     public WebDriver driver = null;
 
+
+
     /*method for passing the OS parameter and Browser Parameter
        * depending on the passed browser type parameter, it will trigger the respected browser*/
     public WebDriver getLocalDriver(String OS,String browserName){
         if(browserName.equalsIgnoreCase("chrome")){
             if(OS.equalsIgnoreCase("Mac")){
-                System.setProperty("webdriver.chrome.driver", "../Generic/driver/chromedriver");
+                System.setProperty("webdriver.chrome.driver", "/Users/sami/git-home-repos/WebAppsFramework/Generic/src/driver/chromedriver");
             }else if(OS.equalsIgnoreCase("Win10")){
                 System.setProperty("webdriver.chrome.driver", "C:\\Users\\EliteBook\\Selenium 3.0 2016 batch\\MavenProjects\\WebApp\\Generic\\src\\driver\\chromedriver.exe");
             }
@@ -53,7 +58,7 @@ public class BaseAPIs {
     @Parameters({"useCloudEnv","userName","accessKey","os","browserName","browserVersion","url"})
     @BeforeMethod
     public void setUp(@Optional("false") boolean useCloudEnv, @Optional("rahmanww") String userName, @Optional("")
-            String accessKey, @Optional("Windows 10") String os, @Optional("chrome") String browserName, @Optional("55")
+            String accessKey, @Optional("Windows 10") String os, @Optional("chrome") String browserName, @Optional("58")
                               String browserVersion, @Optional("http://www.cnn.com") String url)throws IOException {
 
         //if we are using cloud enviurmment then use it else just get get local driver
@@ -90,8 +95,10 @@ public class BaseAPIs {
 
 
 
+        }
     }
-    }
+
+
     @AfterMethod
     public void tearDown() {
         driver.close();
@@ -158,6 +165,13 @@ public class BaseAPIs {
     /*sleep*/
     public void sleepFor(int sec) throws InterruptedException {
         Thread.sleep(sec * 1000);
+    }
+
+    //get list of elements by xpath
+    public List<WebElement> getListOfWebElementsByXpath(String locator) {
+        List<WebElement> list = new ArrayList<WebElement>();
+        list = driver.findElements(By.xpath(locator));
+        return list;
     }
 
 
