@@ -15,12 +15,14 @@
 
 
 
-    <test name = "DemoQA Registration Page">
+    <test name = "DemoQA Registration DDL">
         <classes>
-           <class name="Registration.RegistrationPage"/>
+<!--
+            <class name="Registration.DBDDL"/>
+-->
+
 
         </classes>
     </test>
 
 </suite>
-

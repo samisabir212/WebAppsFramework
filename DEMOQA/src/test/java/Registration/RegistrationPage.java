@@ -94,13 +94,8 @@ public class RegistrationPage extends BaseAPIs {
 
     }
 
-    @Test
-    public void DBandDropDownList{
 
 
-        //click Registration page link
-        clickById("menu-item-374");
-    }
 
 
     public void uploadFile(String locator, String vsPNGfilePath) throws InterruptedException, AWTException {
