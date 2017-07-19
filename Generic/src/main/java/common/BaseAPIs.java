@@ -1,9 +1,6 @@
 package common;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -23,6 +20,9 @@ import java.util.concurrent.TimeUnit;
 public class BaseAPIs {
 
     public WebDriver driver = null;
+    public JavascriptExecutor js;
+
+
 
 
 

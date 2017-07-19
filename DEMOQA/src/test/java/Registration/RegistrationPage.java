@@ -2,8 +2,8 @@ package Registration;
 
 import common.BaseAPIs;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
@@ -20,8 +20,14 @@ import static org.testng.AssertJUnit.assertEquals;
 public class RegistrationPage extends BaseAPIs {
 
 
+
+
+
     @Test
-    public void enterFirstName() throws InterruptedException, AWTException {
+    public void TestRegistrationPage() throws InterruptedException, AWTException {
+
+        js = (JavascriptExecutor) driver;
+
 
         //click Registration page link
         clickById("menu-item-374");
@@ -47,9 +53,6 @@ public class RegistrationPage extends BaseAPIs {
 
         }
 
-
-
-
         //select month DOB
         clickByXpath(".//select[@id='mm_date_8']//option[@value=10]");
         //select day DOB
@@ -61,9 +64,14 @@ public class RegistrationPage extends BaseAPIs {
 
         sleepFor(4);
 
+        js.executeScript("window.scrollBy(0,1900)");
+        sleepFor(2);
+
         //enter username
 
         //enter email
+
+
 
         //upload profile picture [USE ROBOT FOR MAC}
         uploadFile("profile_pic_10", "/Users/sami/VS2.jpg");
@@ -78,15 +86,22 @@ public class RegistrationPage extends BaseAPIs {
         //assert if password notification field level is present as "weak"
         String strengthLevelBox = driver.findElement(By.id("piereg_passwordStrength")).getText();
         System.out.println(strengthLevelBox);
-        assertEquals(strengthLevelBox, "Very weak");
+        assertEquals(strengthLevelBox, "Weak");
 
         sleepFor(3);
 
 
-
-        sleepFor(3);
 
     }
+
+    @Test
+    public void DBandDropDownList{
+
+
+        //click Registration page link
+        clickById("menu-item-374");
+    }
+
 
     public void uploadFile(String locator, String vsPNGfilePath) throws InterruptedException, AWTException {
 
@@ -103,8 +118,11 @@ public class RegistrationPage extends BaseAPIs {
         robot.keyPress(KeyEvent.VK_META); //meta is for command for key press
         robot.keyPress(KeyEvent.VK_TAB);
         //release the key
+        robot.delay(2000);
         robot.keyRelease(KeyEvent.VK_META);
         robot.keyRelease(KeyEvent.VK_TAB);
+
+        robot.delay(2000);
 
 
         robot.delay(2000);
@@ -116,6 +134,7 @@ public class RegistrationPage extends BaseAPIs {
         robot.keyRelease(KeyEvent.VK_META);
         robot.keyRelease(KeyEvent.VK_SHIFT);
         robot.keyRelease(KeyEvent.VK_G);
+        robot.delay(2000);
         //paste the clipboard value
         robot.keyPress(KeyEvent.VK_META);
         robot.keyPress(KeyEvent.VK_V);
@@ -127,12 +146,13 @@ public class RegistrationPage extends BaseAPIs {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease((KeyEvent.VK_ENTER));
         robot.keyRelease((KeyEvent.VK_ENTER));
+        robot.delay(2000);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease((KeyEvent.VK_ENTER));
         robot.keyRelease((KeyEvent.VK_ENTER));
 
-        sleepFor(10);
+        sleepFor(5);
 
 
     }
