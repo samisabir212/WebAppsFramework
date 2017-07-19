@@ -1,19 +1,21 @@
 package DBdataSource;
 
+import common.BaseAPIs;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created by sami on 7/19/17.
  */
-public class Datasource {
+public class Datasource extends BaseAPIs {
 
 
 
     public static final String DB_NAME = "demoqa.db";
     public static final String CONNECTION_STRING = "jdbc:sqlite:/Users/sami/git-home-repos/WebAppsFramework/DEMOQA/src/data/" + DB_NAME;
-
 
 
     private Connection conn;
@@ -26,6 +28,7 @@ public class Datasource {
     public boolean open() {
         try {
             conn = DriverManager.getConnection(CONNECTION_STRING);
+            System.out.println("connected");
             return true;
         } catch (SQLException e) {
             System.out.println("Couldn't connect to database: " + e.getMessage());
@@ -47,6 +50,7 @@ public class Datasource {
     }
 
 
+    
 
 
 

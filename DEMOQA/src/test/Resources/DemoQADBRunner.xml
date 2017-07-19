@@ -17,9 +17,8 @@
 
     <test name = "DemoQA Registration DDL">
         <classes>
-<!--
+
             <class name="Registration.DBDDL"/>
--->
 
 
         </classes>
