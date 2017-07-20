@@ -21,6 +21,7 @@ public class Datasource extends BaseAPIs {
     private Connection conn;
 
 
+
     /*
     method to open DB connection
         using connection_string
@@ -47,6 +48,13 @@ public class Datasource extends BaseAPIs {
             System.out.println("Couldn't close connection: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+
+    public void printQuery(String query) {
+
+
+
     }
 
 

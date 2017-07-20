@@ -26,10 +26,17 @@ public class DBDDL extends BaseAPIs {
 
         datasource.open();
 
-
-
         //click Registration page link
         clickById("menu-item-374");
+
+
+        //get list of all items in Country dropdown list
+
+
+        //get all countries listed in country column in demoqa Table from DB
+
+
+        //assert whether all expected data equals actual data
 
         sleepFor(5);
 
