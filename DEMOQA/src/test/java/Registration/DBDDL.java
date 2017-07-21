@@ -4,7 +4,8 @@ import DBdataSource.Datasource;
 import common.BaseAPIs;
 import org.testng.annotations.Test;
 
-import java.sql.Statement;
+import java.sql.SQLException;
+
 
 /**
  * Created by sami on 7/19/17.
@@ -16,7 +17,7 @@ public class DBDDL extends BaseAPIs {
 
 
     @Test
-    public void TestDropDownListDB() throws InterruptedException {
+    public void TestDropDownListDB() throws InterruptedException, SQLException {
 
         Datasource datasource = new Datasource();
         if (!datasource.open()) {
@@ -30,13 +31,17 @@ public class DBDDL extends BaseAPIs {
         clickById("menu-item-374");
 
 
-        //get list of all items in Country dropdown list
+        //print list of all items in Country dropdown list
+        printListOfWebElementsByID("dropdown_7");
 
 
         //get all countries listed in country column in demoqa Table from DB
+        datasource.printDBcountryList("select country from demoqa;");
 
 
-        //assert whether all expected data equals actual data
+
+        //check if webapp DDL matches DB list data
+
 
         sleepFor(5);
 

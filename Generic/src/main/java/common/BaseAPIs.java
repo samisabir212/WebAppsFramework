@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.*;
 
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ public class BaseAPIs {
 
     public WebDriver driver = null;
     public JavascriptExecutor js;
+
+
 
 
 
@@ -105,6 +108,8 @@ public class BaseAPIs {
 
     }
 
+
+
     /************CLICK***********/
 
     //click by id
@@ -172,7 +177,38 @@ public class BaseAPIs {
         List<WebElement> list = new ArrayList<WebElement>();
         list = driver.findElements(By.xpath(locator));
         return list;
+
     }
+
+    public List<WebElement> getListOfWebElementsByID(String locator) {
+        List<WebElement> list = new ArrayList<WebElement>();
+        list = driver.findElements(By.id(locator));
+
+        System.out.println(list.toString());
+
+        return list;
+    }
+
+    public List<WebElement> printListOfWebElementsByID(String locator) {
+
+        WebElement element = driver.findElement(By.id(locator));
+        Select sel = new Select(element);
+        List<WebElement> options = sel.getOptions();
+        int size = options.size();
+
+        for (int i = 0; i < 3; i++) {
+
+            String optionName = options.get(i).getText();
+            System.out.println(optionName);
+
+        }
+
+
+        return options;
+    }
+
+
+
 
 
 
