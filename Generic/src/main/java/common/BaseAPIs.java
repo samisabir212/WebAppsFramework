@@ -32,12 +32,18 @@ public class BaseAPIs {
     /*method for passing the OS parameter and Browser Parameter
        * depending on the passed browser type parameter, it will trigger the respected browser*/
     public WebDriver getLocalDriver(String OS,String browserName){
+
+
         if(browserName.equalsIgnoreCase("chrome")){
             if(OS.equalsIgnoreCase("Mac")){
-                System.setProperty("webdriver.chrome.driver", "/Users/sami/git-home-repos/WebAppsFramework/Generic/src/driver/chromedriver");
+                System.setProperty("webdriver.chrome.driver", "../Generic/src/driver/chromedriver");
+
             }else if(OS.equalsIgnoreCase("Win10")){
                 System.setProperty("webdriver.chrome.driver", "C:\\Users\\EliteBook\\Selenium 3.0 2016 batch\\MavenProjects\\WebApp\\Generic\\src\\driver\\chromedriver.exe");
+            }else  if(OS.equalsIgnoreCase("Linux")) {
+                System.setProperty("webdriver.chrome.driver", "../Generic/src/driver/chromedriverLinux");
             }
+
             driver = new ChromeDriver();
         }else if(browserName.equalsIgnoreCase("firefox")){
             if(OS.equalsIgnoreCase("Mac")){
