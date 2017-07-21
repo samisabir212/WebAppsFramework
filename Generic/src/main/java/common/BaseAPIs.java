@@ -195,6 +195,7 @@ public class BaseAPIs {
         Select sel = new Select(element);
         List<WebElement> options = sel.getOptions();
         int size = options.size();
+        System.out.println("***Data from WebApp***");
 
         for (int i = 0; i < 3; i++) {
 

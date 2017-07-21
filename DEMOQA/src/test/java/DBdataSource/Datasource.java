@@ -56,22 +56,49 @@ public class Datasource extends BaseAPIs {
 
     }
 
-    public void compareList(String query, String locator) throws SQLException {
-
-        createAStatement(query);
-
-        WebElement drop_down =driver.findElement(By.id("dropdown_7"));
-        Select se = new Select(drop_down);
-        List<WebElement> options = se.getOptions();
-
-
-    }
+//    public void compareList(String query, String locator) throws SQLException {
+//
+//        // Index for Row
+//        int rowCount = 0;
+//
+//        // Count of Matched Column
+//        int matchColumnCount = 0;
+//
+//        // Count of Matched Row
+//        int matchRowCount = 0;
+//        createAStatement(query);
+//
+//        WebElement drop_down = driver.findElement(By.id(locator));
+//        Select se = new Select(drop_down);
+//        List<WebElement> options = se.getOptions();
+//
+//        System.out.println("Row Count => " + options.size());
+//
+//        while (resultSet.next()) {
+//
+//            WebElement optionsLists = options.get(rowCount + 1);
+//
+//            for (int j = 0; j < optionsLists.getSize(); j++) {
+//
+//
+//            }
+//
+//
+//
+//        }
+//
+//
+//
+//
+//    }
 
 
 
     public void printDBcountryList(String query) throws SQLException {
 
         createAStatement(query);
+        System.out.println("***Data from DB***");
+
 
         while (resultSet.next()) {
             System.out.println(resultSet.getString(1));
@@ -92,18 +119,6 @@ public class Datasource extends BaseAPIs {
             System.out.println("Couldn't close connection: " + e.getMessage());
             e.printStackTrace();
         }
-    }
-
-
-    public void printAnyQuery(String query) throws SQLException {
-
-        createAStatement(query);
-
-    }
-
-    public void getList(String xpath) {
-
-
     }
 
 
