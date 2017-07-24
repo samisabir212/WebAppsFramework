@@ -56,41 +56,6 @@ public class Datasource extends BaseAPIs {
 
     }
 
-//    public void compareList(String query, String locator) throws SQLException {
-//
-//        // Index for Row
-//        int rowCount = 0;
-//
-//        // Count of Matched Column
-//        int matchColumnCount = 0;
-//
-//        // Count of Matched Row
-//        int matchRowCount = 0;
-//        createAStatement(query);
-//
-//        WebElement drop_down = driver.findElement(By.id(locator));
-//        Select se = new Select(drop_down);
-//        List<WebElement> options = se.getOptions();
-//
-//        System.out.println("Row Count => " + options.size());
-//
-//        while (resultSet.next()) {
-//
-//            WebElement optionsLists = options.get(rowCount + 1);
-//
-//            for (int j = 0; j < optionsLists.getSize(); j++) {
-//
-//
-//            }
-//
-//
-//
-//        }
-//
-//
-//
-//
-//    }
 
 
 
