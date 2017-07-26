@@ -9,7 +9,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.*;
 
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
@@ -26,6 +25,45 @@ public class BaseAPIs {
 
 
 
+
+
+
+
+    /*method for passing the OS parameter and Browser Parameter
+       * depending on the passed browser type parameter, it will trigger the respected browser*/
+    public WebDriver getLocalDriver(String OS,String browserName){
+
+
+        if(browserName.equalsIgnoreCase("chrome")){
+            if(OS.equalsIgnoreCase("Mac")){
+                System.setProperty("webdriver.chrome.driver", "../Generic/src/driver/chromedriver");
+
+            }else if(OS.equalsIgnoreCase("Win10")){
+                System.setProperty("webdriver.chrome.driver", "C:\\Users\\EliteBook\\Selenium 3.0 2016 batch\\MavenProjects\\WebApp\\Generic\\src\\driver\\chromedriver.exe");
+            }else  if(OS.equalsIgnoreCase("Linux")) {
+                System.setProperty("webdriver.chrome.driver", "../Generic/src/driver/chromedriverLinux");
+            }
+
+            driver = new ChromeDriver();
+        }else if(browserName.equalsIgnoreCase("firefox")){
+            if(OS.equalsIgnoreCase("Mac")){
+                System.setProperty("webdriver.gecko.driver", "../Generic/driver/geckodriver");
+            }else if(OS.equalsIgnoreCase("Win10")) {
+                System.setProperty("webdriver.gecko.driver", "../Generic/driver/geckodriver.exe");
+            }
+            driver = new FirefoxDriver();
+
+        } else if(browserName.equalsIgnoreCase("ie")) {
+            System.setProperty("webdriver.ie.driver", "../Generic/driver/IEDriverServer.exe");
+            driver = new InternetExplorerDriver();
+        }
+        return driver;
+
+    }
+
+
+    //this runs before your test method
+    //for cloud service only
     @Parameters({"useCloudEnv","userName","accessKey","os","browserName","browserVersion","url"})
     @BeforeMethod
     public void setUp(@Optional("false") boolean useCloudEnv, @Optional("rahmanww") String userName, @Optional("")
@@ -52,89 +90,6 @@ public class BaseAPIs {
 
 
 
-
-
-
-    @AfterMethod
-    public void tearDown() {
-        driver.close();
-
-    }
-
-
-
-    /*method for passing the OS parameter and Browser Parameter
-       * depending on the passed browser type parameter, it will trigger the respected browser*/
-    public WebDriver getLocalDriver(String OS,String browserName){
-
-
-        if(browserName.equalsIgnoreCase("chrome")){
-
-            if(OS.equalsIgnoreCase("Mac")){
-                System.setProperty("webdriver.chrome.driver", "/Users/sami/git-home-repos/WebAppsFramework/Generic/src/driver/chromedriver");
-
-            }else if(OS.equalsIgnoreCase("Win10")){
-                System.setProperty("webdriver.chrome.driver", "C:\\Users\\EliteBook\\Selenium 3.0 2016 batch\\MavenProjects\\WebApp\\Generic\\src\\driver\\chromedriver.exe");
-            }
-            driver = new ChromeDriver();
-
-
-        }else if(browserName.equalsIgnoreCase("firefox")){
-
-            if(OS.equalsIgnoreCase("Mac")){
-                System.setProperty("webdriver.gecko.driver", "../Generic/driver/geckodriver");
-
-
-            }else if(OS.equalsIgnoreCase("Win10")) {
-                System.setProperty("webdriver.gecko.driver", "../Generic/driver/geckodriver.exe");
-            }
-
-
-            driver = new FirefoxDriver();
-
-        } else if(browserName.equalsIgnoreCase("ie")) {
-            System.setProperty("webdriver.ie.driver", "../Generic/driver/IEDriverServer.exe");
-            driver = new InternetExplorerDriver();
-        }
-
-
-        return driver;
-
-    }
-
-    public static WebDriver getDriverInstance(String platform, String browser, String version, String url)
-            throws MalformedURLException {
-        String nodeURL = "http://ip address:5555/wd/hub";
-        WebDriver driver = null;
-        DesiredCapabilities caps = new DesiredCapabilities();
-
-        // Platforms
-        if (platform.equalsIgnoreCase("Windows")) {
-            caps.setPlatform(Platform.WINDOWS);
-        }
-        if (platform.equalsIgnoreCase("MAC")) {
-            caps.setPlatform(Platform.MAC);
-        }
-        // Browsers
-        if (browser.equalsIgnoreCase("chrome")) {
-            caps = DesiredCapabilities.chrome();
-        }
-        if (browser.equalsIgnoreCase("firefox")) {
-            caps = DesiredCapabilities.firefox();
-        }
-        // Version
-        caps.setVersion(version);
-        driver = new RemoteWebDriver(new URL(nodeURL), caps);
-        // Maximize the browser's window
-        // driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        // Open the Application
-        driver.get(url);
-        return driver;
-    }
-
-
-
     /*method for Cloud Driver*/
     public WebDriver getCloudDriver(String userName,String accessKey,String os, String browserName,
                                     String browserVersion)throws IOException {{
@@ -149,8 +104,16 @@ public class BaseAPIs {
 
 
 
+        }
     }
+
+
+    @AfterMethod
+    public void tearDown() {
+        driver.close();
+
     }
+
 
 
     /************CLICK***********/
