@@ -1,106 +1,44 @@
-package common;
+package SeleniumGrid;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by EliteBook on 4/25/2017.
+ * Created by sami on 7/25/17.
  */
-public class BaseAPIs {
-
-    public WebDriver driver = null;
-    public JavascriptExecutor js;
+public class GridBaseAPI {
 
 
+    protected WebDriver driver;
+    protected SearchPageFactory search;
 
-    @Parameters({"useCloudEnv","userName","accessKey","os","browserName","browserVersion","url"})
-    @BeforeMethod
-    public void setUp(@Optional("false") boolean useCloudEnv, @Optional("rahmanww") String userName, @Optional("")
-            String accessKey, @Optional("Windows 10") String os, @Optional("chrome") String browserName, @Optional("58")
-                              String browserVersion, @Optional("http://www.cnn.com") String url)throws IOException {
+    
 
-        //if we are using cloud enviurmment then use it else just get get local driver
-        if(useCloudEnv==true){
-            //run in cloud
-            getCloudDriver(userName,accessKey,os,browserName,browserVersion);
 
-        }else{
-            //run in local
-            getLocalDriver(os,browserName);
+    @Parameters({"platform", "browser", "version", "url"})
+    @BeforeClass(alwaysRun = true)
 
-        }
+    public void setup(String platform, String browser, String version, String url) throws MalformedURLException {
 
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        driver.get(url);
-        driver.manage().window().maximize();
+        driver = getDriverInstance(platform, browser, version, url);
 
+
+        //connected to parameter to run the test by using search
+        SearchPageFactory search = PageFactory.initElements(driver, SearchPageFactory.class);
     }
 
-
-
-
-
-
-
-    @AfterMethod
-    public void tearDown() {
-        driver.close();
-
-    }
-
-
-
-    /*method for passing the OS parameter and Browser Parameter
-       * depending on the passed browser type parameter, it will trigger the respected browser*/
-    public WebDriver getLocalDriver(String OS,String browserName){
-
-
-        if(browserName.equalsIgnoreCase("chrome")){
-
-            if(OS.equalsIgnoreCase("Mac")){
-                System.setProperty("webdriver.chrome.driver", "/Users/sami/git-home-repos/WebAppsFramework/Generic/src/driver/chromedriver");
-
-            }else if(OS.equalsIgnoreCase("Win10")){
-                System.setProperty("webdriver.chrome.driver", "C:\\Users\\EliteBook\\Selenium 3.0 2016 batch\\MavenProjects\\WebApp\\Generic\\src\\driver\\chromedriver.exe");
-            }
-            driver = new ChromeDriver();
-
-
-        }else if(browserName.equalsIgnoreCase("firefox")){
-
-            if(OS.equalsIgnoreCase("Mac")){
-                System.setProperty("webdriver.gecko.driver", "../Generic/driver/geckodriver");
-
-
-            }else if(OS.equalsIgnoreCase("Win10")) {
-                System.setProperty("webdriver.gecko.driver", "../Generic/driver/geckodriver.exe");
-            }
-
-
-            driver = new FirefoxDriver();
-
-        } else if(browserName.equalsIgnoreCase("ie")) {
-            System.setProperty("webdriver.ie.driver", "../Generic/driver/IEDriverServer.exe");
-            driver = new InternetExplorerDriver();
-        }
-
-
-        return driver;
-
-    }
 
     public static WebDriver getDriverInstance(String platform, String browser, String version, String url)
             throws MalformedURLException {
@@ -115,7 +53,11 @@ public class BaseAPIs {
         if (platform.equalsIgnoreCase("MAC")) {
             caps.setPlatform(Platform.MAC);
         }
-        // Browsers
+        if (browser.equalsIgnoreCase("Linux")) {
+            caps.setPlatform(Platform.LINUX);
+        }
+
+            // Browsers
         if (browser.equalsIgnoreCase("chrome")) {
             caps = DesiredCapabilities.chrome();
         }
@@ -133,23 +75,9 @@ public class BaseAPIs {
         return driver;
     }
 
-
-
-    /*method for Cloud Driver*/
-    public WebDriver getCloudDriver(String userName,String accessKey,String os, String browserName,
-                                    String browserVersion)throws IOException {{
-
-        DesiredCapabilities cap = new DesiredCapabilities();
-        cap.setCapability("platform", os);
-        cap.setBrowserName(browserName);
-        cap.setCapability("version",browserVersion);
-        driver = new RemoteWebDriver(new URL("http://"+userName+":"+accessKey+
-                "@ondemand.saucelabs.com:80/wd/hub"), cap);
-        return driver;
-
-
-
-    }
+    @AfterClass
+    public void afterClass() {
+        driver.quit();
     }
 
 
@@ -186,7 +114,6 @@ public class BaseAPIs {
     public void typeByIdEnter(String locator, String value) {
         driver.findElement(By.id(locator)).sendKeys(value, Keys.ENTER);
     }
-
 
 
     //type by xpath and ENTER key
@@ -250,13 +177,6 @@ public class BaseAPIs {
 
         return options;
     }
-
-
-
-
-
-
-
 
 
 }

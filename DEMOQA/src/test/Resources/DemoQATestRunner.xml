@@ -5,6 +5,7 @@
 <suite name="Demo QA" parallel="tests">
 
     <parameter name="useCloudEnv" value="false"/>
+    <parameter name="useLocalEnv" value="true"/>
     <parameter name="userName" value="rahmanww"/>
     <parameter name="accessKey" value="6f132866-de72-43fd-b49a-e6f81d26bfe3"/>
     <parameter name="os" value="Mac"/>
