@@ -34,9 +34,9 @@
         UPDATE VERSION
         IF CANT CONFIGURE WITH LINUX THEN USE WINDOWS.
 -->
-            <parameter name="platform" value="Linux" />
-            <parameter name="browser" value="chrome" />
-            <parameter name="version" value="45.0.2454.85" />
+            <parameter name="platform" value="Windows" />
+            <parameter name="browser" value="firefox" />
+            <parameter name="version" value="54.0" />
             <parameter name="url" value="http://www.expedia.com" />
 
 
