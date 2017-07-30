@@ -29,12 +29,9 @@ public class GridBaseAPI {
 
     @Parameters({"platform", "browser", "version", "url"})
     @BeforeClass(alwaysRun = true)
-
     public void setup(String platform, String browser, String version, String url) throws MalformedURLException {
 
         driver = getDriverInstance(platform, browser, version, url);
-
-
         //connected to parameter to run the test by using search
         SearchPageFactory search = PageFactory.initElements(driver, SearchPageFactory.class);
     }
@@ -42,8 +39,12 @@ public class GridBaseAPI {
 
     public static WebDriver getDriverInstance(String platform, String browser, String version, String url)
             throws MalformedURLException {
-        String nodeURL = "http://ip address:5555/wd/hub";
+
+        //passing node url to remote driver
+        String nodeURL = "http://192.168.1.175:5555/wd/hub";
+
         WebDriver driver = null;
+
         DesiredCapabilities caps = new DesiredCapabilities();
 
         // Platforms

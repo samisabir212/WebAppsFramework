@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by sami on 7/25/17.
+ *
+ * ALL DATA AND DEFINED METHODS TO USE IN THE LAUNCH GRID CLASS
  */
 public class SearchPageFactory{
 

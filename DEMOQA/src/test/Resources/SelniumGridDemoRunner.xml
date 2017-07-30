@@ -5,9 +5,9 @@
 <suite name="TestSuite" parallel="tests">
     <test name="FireFox Test">
 
-            <parameter name="platform" value="MAC" />
-            <parameter name="browser" value="firefox" />
-            <parameter name="version" value="54.0" />
+            <parameter name="platform" value="Linux" />
+            <parameter name="browser" value="Chrome" />
+            <parameter name="version" value="59.0" />
             <parameter name="url" value="www.expedia.com" />
 
 
@@ -34,7 +34,7 @@
         UPDATE VERSION
         IF CANT CONFIGURE WITH LINUX THEN USE WINDOWS.
 -->
-            <parameter name="platform" value="Windows" />
+            <parameter name="platform" value="Linux" />
             <parameter name="browser" value="firefox" />
             <parameter name="version" value="54.0" />
             <parameter name="url" value="http://www.expedia.com" />
