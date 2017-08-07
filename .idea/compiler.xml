@@ -8,11 +8,17 @@
         <outputRelativeToContentRoot value="true" />
         <module name="DEMOQA" />
         <module name="Generic" />
+        <module name="Spirit" />
+        <module name="TestNG" />
+        <module name="UltimateQA" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="DEMOQA" target="1.5" />
       <module name="Generic" target="1.5" />
+      <module name="Spirit" target="1.5" />
+      <module name="TestNG" target="1.5" />
+      <module name="UltimateQA" target="1.5" />
       <module name="WebApp" target="1.5" />
     </bytecodeTargetLevel>
   </component>
