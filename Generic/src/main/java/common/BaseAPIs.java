@@ -6,7 +6,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 import java.util.ArrayList;
@@ -227,5 +229,80 @@ public class BaseAPIs {
 
 
     }
+
+
+
+
+    public static void alertAccept() throws InterruptedException {
+
+        WebDriver driver = null;
+        Alert alert = driver.switchTo().alert();
+        Thread.sleep(5000);
+
+        alert.accept();
+
+        Thread.sleep(5000);
+    }
+
+    //handling Alert
+    public void okAlert(){
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+    public void cancelAlert(){
+        Alert alert = driver.switchTo().alert();
+        alert.dismiss();
+    }
+
+    //iFrame Handle
+    public void iframeHandle(WebElement element) {
+
+        driver.switchTo().frame(element);
+    }
+
+    public void goBackToHomeWindow(){
+
+
+        driver.switchTo().defaultContent();
+    }
+
+    //Synchronization
+    public void waitUntilClickAble(By locator){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+
+    public void waitUntilVisible(By locator){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+    }
+
+    //Explicit wait for an element to be present and then utilize it
+    public WebElement waitForElement(By locator, int timeout) {
+        WebElement element = null;
+        try {
+
+            System.out.println("waiting for maximum :: " + timeout + "seconds for the element to be available");
+            WebDriverWait wait = new WebDriverWait(driver, 3);
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            System.out.println("element appeared on the webpage");
+
+        } catch (Exception e) {
+
+            System.out.println("element not appeared on the webpage");
+
+        }
+        return element;
+
+    }
+
+    public void waitUntilSelectable(By locator){
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        boolean element = wait.until(ExpectedConditions.elementToBeSelected(locator));
+    }
+
+
 
 }
