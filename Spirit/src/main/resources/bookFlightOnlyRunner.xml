@@ -2,7 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 
-<suite name="Demo QA" parallel="tests" thread-count="1">
+<suite name="Spirit Book Flight" parallel="tests">
+
+
 
     <parameter name="useCloudEnv" value="false"/>
     <parameter name="useLocalEnv" value="true"/>
@@ -11,16 +13,18 @@
     <parameter name="os" value="Mac"/>
     <parameter name="browserName" value="chrome"/>
     <parameter name="browserVersion" value="55.0"/>
-    <parameter name="url" value="https://www.ultimateqa.com/complicated-page//"/>
+    <parameter name="url" value="http://spirit.com/"/>
+
 
 
     <test name = "DemoQA Registration Page">
         <classes>
-
-            <class name="Priortizing.Buttons_testNG"/>
+            <class name="Book.bookFlightOnly"/>
 
         </classes>
     </test>
+
+
 
 </suite>
 

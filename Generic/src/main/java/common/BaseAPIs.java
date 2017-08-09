@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
@@ -109,10 +110,8 @@ public class BaseAPIs {
 
     }
 
+    //************SELECT***********
 
-    /************CLICK***********/
-
-    //click by id
     public void clickById(String locator) {
         driver.findElement(By.id(locator)).click();
     }
@@ -166,10 +165,48 @@ public class BaseAPIs {
     }
 
 
+    //verifying >>>>>>><<<<<<<<<<<<>>>>>>>>>>>><<<<<<<<<<<<<>>>>>>>
+
+    public void verifyRadioButtonSelection(String locator) {
+        WebElement roundTripRadioBtn = driver.findElement(By.id(locator));
+
+        boolean radioButton = roundTripRadioBtn.isSelected();
+
+        System.out.println(radioButton);
+
+        if (radioButton = true) {
+            System.out.println("(Passed) Radio Button is selected");
+
+        } else {
+            System.out.println("(failed) Radio button not selected ");
+        }
+
+
+    }
+
+    public void verifyTextFieldisDisplayed(String locator) {
+
+        WebElement textField = driver.findElement(By.id(locator));
+        boolean textFieldObject = textField.isDisplayed();
+
+        if (textFieldObject = true) {
+            System.out.println("(Pass) text field is present");
+
+        } else {
+
+            System.out.println("(Fail) Text field is not present");
+
+        }
+    }
+
+
+
     /*sleep*/
     public void sleepFor(int sec) throws InterruptedException {
         Thread.sleep(sec * 1000);
     }
+
+
 
     //get list of elements by xpath
     public List<WebElement> getListOfWebElementsByXpath(String locator) {
@@ -196,7 +233,7 @@ public class BaseAPIs {
         int size = options.size();
         System.out.println("***Data from WebApp***");
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < size; i++) {
 
             String optionName = options.get(i).getText();
             System.out.println(optionName);
@@ -206,6 +243,9 @@ public class BaseAPIs {
 
         return options;
     }
+
+
+
 
     public String getCurrentPageUrl() {
         String url = driver.getCurrentUrl();
@@ -302,6 +342,9 @@ public class BaseAPIs {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         boolean element = wait.until(ExpectedConditions.elementToBeSelected(locator));
     }
+
+
+
 
 
 

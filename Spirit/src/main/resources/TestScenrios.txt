@@ -1,0 +1,10 @@
+validate that a non user can not book only a flight
+
+validate that a non user can not book a flight and car rental
+
+validate that a non user can not book a flight and hotel
+
+validate that a non user can not book a flight
+
+
+
