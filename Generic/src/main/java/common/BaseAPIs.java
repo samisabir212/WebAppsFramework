@@ -112,6 +112,13 @@ public class BaseAPIs {
 
     //************SELECT***********
 
+
+    public void selectOptionByVisibleText(String value, String locator) {
+        WebElement object = driver.findElement(By.id(locator));
+        Select select = new Select(object);
+        select.selectByVisibleText(value);
+    }
+
     public void clickById(String locator) {
         driver.findElement(By.id(locator)).click();
     }
