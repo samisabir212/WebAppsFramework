@@ -1,21 +1,14 @@
 package Book;
 
 import common.BaseAPIs;
-import org.testng.annotations.Test;
-
-
 
 /**
  * Created by sami on 8/8/17.
  */
-public class bookFlightOnly extends BaseAPIs {
+public class BookFlightOnlyTestScript extends BaseAPIs {
 
 
-
-    //user should be able to search a Round trip flight without a child or children
-    @Test
-    public void searchFlights() throws InterruptedException {
-
+    public void ScreenShotOnFail() throws InterruptedException {
 
         clickById("flightOnlyWidgetOptions");
         sleepFor(3);
@@ -71,8 +64,8 @@ public class bookFlightOnly extends BaseAPIs {
         //selecting year of young traveler
         selectOptionByVisibleText("child_0_year", "2003");
 
-
-        clickByXpath(".//button[@class='button primary']");
+        //click continue button
+        clickByXpath("//button[@class='button primary']");
 
         //take screen shot on failure
 
@@ -81,9 +74,14 @@ public class bookFlightOnly extends BaseAPIs {
 
 
 
-        getCurrentPageUrl();
 
+
+        getCurrentPageUrl();
     }
 
 
+
 }
+
+
+

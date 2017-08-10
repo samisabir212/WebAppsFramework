@@ -113,7 +113,7 @@ public class BaseAPIs {
     //************SELECT***********
 
 
-    public void selectOptionByVisibleText(String value, String locator) {
+    public void selectOptionByVisibleText(String locator, String value) {
         WebElement object = driver.findElement(By.id(locator));
         Select select = new Select(object);
         select.selectByVisibleText(value);
@@ -205,6 +205,21 @@ public class BaseAPIs {
 
         }
     }
+
+    //verify a button is present
+    public void verifyButtonIsPresent(String locator, String True, String False) {
+        WebElement button = driver.findElement(By.xpath(locator));
+        boolean verifyButton = button.isDisplayed();
+
+        if (verifyButton = true) {
+            System.out.println(True);
+
+        } else {
+            System.out.println(False);
+
+        }
+    }
+
 
 
 
@@ -314,9 +329,13 @@ public class BaseAPIs {
     }
 
     //Synchronization
-    public void waitUntilClickAble(By locator){
+    public void waitUntilClickAble(String locator){
+
+
+
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
+
     }
 
 

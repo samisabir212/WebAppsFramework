@@ -9,13 +9,18 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>UltimateQA</artifactId>
+    <artifactId>com.Sami.DataDrivenFrameWork</artifactId>
+
+
+
     <dependencies>
         <dependency>
             <groupId>WebAppSample</groupId>
             <artifactId>Generic</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+
 
     </dependencies>
 

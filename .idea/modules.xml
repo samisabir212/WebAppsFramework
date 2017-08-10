@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DEMOQA/DEMOQA.iml" filepath="$PROJECT_DIR$/DEMOQA/DEMOQA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataDrivenFrameWork/DataDrivenFrameWork.iml" filepath="$PROJECT_DIR$/DataDrivenFrameWork/DataDrivenFrameWork.iml" />
       <module fileurl="file://$PROJECT_DIR$/Generic/Generic.iml" filepath="$PROJECT_DIR$/Generic/Generic.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spirit/Spirit.iml" filepath="$PROJECT_DIR$/Spirit/Spirit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TestNG/UltimateQA.iml" filepath="$PROJECT_DIR$/TestNG/UltimateQA.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestNG/UltimateQA.iml" filepath="$PROJECT_DIR$/TestNG/UltimateQA.iml" />
       <module fileurl="file://$PROJECT_DIR$/WebApp.iml" filepath="$PROJECT_DIR$/WebApp.iml" />
     </modules>
