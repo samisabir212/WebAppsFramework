@@ -12,7 +12,6 @@ import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.Hashtable;
 
-import static Utilities.TestConfig.driver;
 
 public class TestUtil extends TestBase {
 
