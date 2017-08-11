@@ -14,6 +14,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Generic" />
+    <orderEntry type="library" name="Maven: org.uncommons:reportng:1.1.4" level="project" />
+    <orderEntry type="library" name="Maven: velocity:velocity:1.4" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: velocity:velocity-dep:1.4" level="project" />
     <orderEntry type="library" name="Maven: org.testng:testng:6.11" level="project" />
     <orderEntry type="library" name="Maven: com.beust:jcommander:1.64" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.17" level="project" />
@@ -65,5 +68,26 @@
     <orderEntry type="library" name="Maven: net.jcip:jcip-annotations:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:jetty-repacked:9.4.1.v20170120" level="project" />
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.15.1" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongo-java-driver:3.4.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.poi:poi:3.6" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.poi:poi-ooxml:3.6" level="project" />
+    <orderEntry type="library" name="Maven: dom4j:dom4j:1.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.poi:poi-ooxml-schemas:3.6" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-stax-api_1.0_spec:1.0" level="project" />
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:6.0.5" level="project" />
+    <orderEntry type="library" name="Maven: com.relevantcodes:extentreports:2.41.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.8.3" level="project" />
+    <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.23" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver:3.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:bson:3.0.4" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:3.0.4" level="project" />
+    <orderEntry type="library" name="Maven: com.google.inject:guice:4.1.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Maven: javax.mail:mail:1.4.7" level="project" />
+    <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.xmlbeans:xmlbeans:2.3.0" level="project" />
+    <orderEntry type="library" name="Maven: stax:stax-api:1.0.1" level="project" />
   </component>
 </module>

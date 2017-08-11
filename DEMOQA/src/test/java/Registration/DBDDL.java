@@ -1,7 +1,7 @@
 package Registration;
 
 import DBdataSource.Datasource;
-import common.BaseAPIs;
+import commonAPI_1.BaseAPIs;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;

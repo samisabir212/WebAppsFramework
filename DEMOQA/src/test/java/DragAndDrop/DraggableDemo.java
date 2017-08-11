@@ -1,6 +1,6 @@
 package DragAndDrop;
 
-import common.BaseAPIs;
+import commonAPI_1.BaseAPIs;
 import org.testng.annotations.Test;
 
 /**

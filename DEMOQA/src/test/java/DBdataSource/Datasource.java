@@ -1,12 +1,8 @@
 package DBdataSource;
 
-import common.BaseAPIs;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
+import commonAPI_1.BaseAPIs;
 
 import java.sql.*;
-import java.util.List;
 
 /**
  * Created by sami on 7/19/17.

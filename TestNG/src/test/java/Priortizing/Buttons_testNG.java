@@ -1,6 +1,6 @@
 package Priortizing;
 
-import common.BaseAPIs;
+import commonAPI_1.BaseAPIs;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
