@@ -18,6 +18,9 @@ public class TestUtil extends TestBase {
 	public static String screenshotPath;
 	public static String screenshotName;
 
+
+	//utility to capture a screen shot
+	//will be saved in the target/surefire html
 	public static void captureScreenshot() throws IOException {
 
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -30,6 +33,8 @@ public class TestUtil extends TestBase {
 
 	}
 
+
+	//gets the data from the excel sheet dataprovidor
 	@DataProvider(name="dp")
 	public Object[][] getData(Method m) {
 
@@ -58,7 +63,8 @@ public class TestUtil extends TestBase {
 
 	}
 	
-	
+
+	//checking if the test is runnable true or false by sheet name and runmode
 	public static boolean isTestRunnable(String testName, ExcelReader excel){
 		
 		String sheetName="test_suite";
