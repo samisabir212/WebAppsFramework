@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -173,6 +174,60 @@ public class BaseAPIs {
     }
 
 
+    public void clearInputField(String locator) {
+
+        driver.findElement(By.cssSelector(locator)).clear();
+    }
+
+    public WebElement getElement(String locator, String type) {
+        type = type.toLowerCase();
+        if (type.equals("id")) {
+            System.out.println("Element found with id: " + locator);// you can change it and make it print ID by changing locator to type
+            return this.driver.findElement(By.id(locator));
+        }
+        else if (type.equals("xpath")) {
+            System.out.println("Element found with xpath: " + locator);
+            return this.driver.findElement(By.xpath(locator));
+        }
+        else if (type.equals("css")) {
+            System.out.println("Element found with xpath: " + locator);
+            return this.driver.findElement(By.cssSelector(type));
+        }
+        else if (type.equals("linktext")) {
+            System.out.println("Element found with xpath: " + locator);
+            return this.driver.findElement(By.linkText(locator));
+        }
+        else if (type.equals("partiallinktext")) {
+            System.out.println("Element found with xpath: " + locator);
+            return this.driver.findElement(By.partialLinkText(type));
+        }
+        else {
+            System.out.println("Locator type not supported");
+            return null;
+        }
+    }
+
+    //get Links
+    public void getLinks(String locator){
+        driver.findElement(By.linkText(locator)).findElement(By.tagName("a")).getText();
+    }
+
+
+    public List<String> getTextFromWebElements(String locator){
+
+
+        List<WebElement> element = new ArrayList<WebElement>();
+        List<String> text = new ArrayList<String>();
+        element = driver.findElements(By.cssSelector(locator));
+        for(WebElement web:element){
+            text.add(web.getText());
+        }
+
+        return text;
+    }
+
+
+
     //verifying >>>>>>><<<<<<<<<<<<>>>>>>>>>>>><<<<<<<<<<<<<>>>>>>>
 
     public void verifyRadioButtonSelection(String locator) {
@@ -267,6 +322,15 @@ public class BaseAPIs {
         return options;
     }
 
+
+
+    public List<String> getListOfString(List<WebElement> list) {
+        List<String> items = new ArrayList<String>();
+        for (WebElement element : list) {
+            items.add(element.getText());
+        }
+        return items;
+    }
 
 
 
@@ -395,6 +459,18 @@ public class BaseAPIs {
 
     }
 
+
+    public void navigateBack(){
+
+
+        driver.navigate().back();
+    }
+
+
+    public void navigateForward(){
+        driver.navigate().forward();
+    }
+
     //Synchronization
     public void waitUntilClickAble(String locator){
 
@@ -406,8 +482,25 @@ public class BaseAPIs {
     }
 
 
+    public void implicitWait(Long waitTime) {
+
+        driver.manage().timeouts().implicitlyWait(waitTime, TimeUnit.SECONDS);
+
+
+    }
+
+    public void explicitWait(Long waitTime) {
+        WebDriverWait wait = new WebDriverWait(driver,waitTime);
+
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.id("someid")));
+        //check the different methods that the ExpectedCondition class has to offer.
+    }
+
+    //use this as an example to all other wait types
     public void waitUntilVisible(By locator){
+
         WebDriverWait wait = new WebDriverWait(driver, 10);
+
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
     }
@@ -416,6 +509,7 @@ public class BaseAPIs {
     public WebElement waitForElement(By locator, int timeout) {
         WebElement element = null;
         try {
+            //create an element object before action
 
             System.out.println("waiting for maximum :: " + timeout + "seconds for the element to be available");
             WebDriverWait wait = new WebDriverWait(driver, 3);
@@ -432,8 +526,43 @@ public class BaseAPIs {
     }
 
     public void waitUntilSelectable(By locator){
+
         WebDriverWait wait = new WebDriverWait(driver, 10);
         boolean element = wait.until(ExpectedConditions.elementToBeSelected(locator));
+
+        //create an element object before action
+    }
+
+
+    public void mouseHoverByCSS(String locator){
+        try {
+            WebElement element = driver.findElement(By.cssSelector(locator));
+            Actions action = new Actions(driver);
+            Actions hover = action.moveToElement(element);
+        }catch(Exception ex){
+            System.out.println("First attempt has been done, This is second try");
+            WebElement element = driver.findElement(By.cssSelector(locator));
+            Actions action = new Actions(driver);
+            action.moveToElement(element).perform();
+
+        }
+
+    }
+
+
+    public void mouseHoverByXpath(String locator){
+        try {
+            WebElement element = driver.findElement(By.xpath(locator));
+            Actions action = new Actions(driver);
+            Actions hover = action.moveToElement(element);
+        }catch(Exception ex){
+            System.out.println("First attempt has been done, This is second try");
+            WebElement element = driver.findElement(By.cssSelector(locator));
+            Actions action = new Actions(driver);
+            action.moveToElement(element).perform();
+
+        }
+
     }
 
 
