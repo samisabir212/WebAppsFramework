@@ -12,9 +12,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -292,7 +294,16 @@ public class BaseAPIs {
     }
 
 
+    //handling Alert
+    public boolean isAlertPresent() {
 
+        try{
+            driver.switchTo().alert();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     public static void alertAccept() throws InterruptedException {
 
@@ -304,8 +315,7 @@ public class BaseAPIs {
 
         Thread.sleep(5000);
     }
-
-    //handling Alert
+    //same as alertAccept method
     public void okAlert(){
         Alert alert = driver.switchTo().alert();
         alert.accept();
@@ -315,16 +325,74 @@ public class BaseAPIs {
         alert.dismiss();
     }
 
+
+    public void getAlertText(Alert verifiedText) {
+
+        Alert text = driver.switchTo().alert();
+        System.out.println("Text of the alert is : " + text);
+
+        if (verifiedText != text) {
+            System.out.println("alert does not equal : " + verifiedText);
+
+        }
+
+    }
+
+
     //iFrame Handle
     public void iframeHandle(WebElement element) {
 
+        //make sure you get the id or name of the iframe and pass it as element
         driver.switchTo().frame(element);
+
+    }
+
+    //counting iframe handles
+    public void countIframeHandles(String tagNameLocator) {
+
+        int iFrameElements = driver.findElements(By.tagName(tagNameLocator)).size();
+
+        System.out.println("total count of iframes on this page is : " + iFrameElements);
+
     }
 
     public void goBackToHomeWindow(){
 
 
         driver.switchTo().defaultContent();
+    }
+
+
+    //Working with Window Handles
+    public void getWindowHandle() {
+        //returns parent window handle
+        String primeWindow = driver.getWindowHandle();
+
+    }
+
+    //switching from parent window to child window
+    public void switchParentToChildWindow() {
+
+        Set<String> allWindows = driver.getWindowHandles();
+
+        Iterator<String> allWindow = allWindows.iterator();
+
+        String parentWindow = allWindow.next();
+
+        String childWindow = allWindow.next();
+
+        driver.switchTo().window(childWindow);
+
+
+
+    }
+
+    public void getAllWindowHandles() {
+
+        Set<String> allWindows = driver.getWindowHandles();
+
+        System.out.println(allWindows);
+
     }
 
     //Synchronization
